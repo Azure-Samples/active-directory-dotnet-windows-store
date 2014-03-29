@@ -38,7 +38,6 @@ namespace TodoListClient
         const string aadInstance = "https://login.windows.net/{0}";
         const string tenant = "skwantoso.com";
         const string clientId = "d4fe66e1-a87a-4b3a-92dd-1c1480ee3455";
-        
 
         static string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);
 

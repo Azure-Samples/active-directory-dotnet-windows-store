@@ -88,7 +88,9 @@ Uri redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.Ge
 
 The redirectURI value will look something like this:
 
-`ms-app://s-1-15-2-2123189467-1366327299-2057240504-936110431-2588729968-1454536261-950042884/
+```
+ms-app://s-1-15-2-2123189467-1366327299-2057240504-936110431-2588729968-1454536261-950042884/
+```
 
 #### Register the TodoListClient app
 
@@ -101,7 +103,8 @@ The redirectURI value will look something like this:
 7. Enter a friendly name for the application, for example "TodoListClient-WindowsStore", select "Native Client Application", and click next.
 8. Enter the Redirect URI value that you obtained during the previous step.  Click finish.
 9. Click the Configure tab of the application.
-10. In "Permissions to Other Applications", select the TodoListService, and request the delegated permission "Have full access to the To Do List service".  Save the configuration.
+10. Find the Client ID value and copy it aside, you will need this later when configuring your application.
+11. In "Permissions to Other Applications", select the TodoListService, and request the delegated permission "Have full access to the To Do List service".  Save the configuration.
 
 ### Step 4:  Configure the sample to use your Azure AD tenant
 
@@ -140,19 +143,20 @@ Coming soon.
 
 ## How To Recreate This Sample
 
+First, in Visual Studio 2013 create an empty solution to host the  projects.  Then, follow these steps to create each project.
+
 ### Creating the TodoListService Project
 
-1. In Visual Studio 2013, create an empty solution to host the two projects.
-2. In the solution, create a new ASP.Net MVC web API project called TodoListService and while creating the project, click the Change Authentication button, select Organizational Accounts, Cloud - Single Organization, enter the name of your Azure AD tenant, and set the Access Level to Single Sign On.  You will be prompted to sign-in to your Azure AD tenant.  NOTE:  You must sign-in with a user that is in the tenant; you cannot, during this step, sign-in with a Microsoft account.
-3. In the `Models` folder add a new class called `TodoItem.cs`.  Copy the implementation of TodoItem from this sample into the class.
-4. Add a new, empty, Web API 2 controller called `TodoListController`.
-5. Copy the implementation of the TodoListController from this sample into the controller.  Don't forget to add the `[Authorize]` attribute to the class.
-6. In `TodoListController` resolving missing references by adding `using` statements for `System.Collections.Concurrent`, `TodoListService.Models`, `System.Security.Claims`.
+1. In the solution, create a new ASP.Net MVC web API project called TodoListService and while creating the project, click the Change Authentication button, select Organizational Accounts, Cloud - Single Organization, enter the name of your Azure AD tenant, and set the Access Level to Single Sign On.  You will be prompted to sign-in to your Azure AD tenant.  NOTE:  You must sign-in with a user that is in the tenant; you cannot, during this step, sign-in with a Microsoft account.
+2. In the `Models` folder add a new class called `TodoItem.cs`.  Copy the implementation of TodoItem from this sample into the class.
+3. Add a new, empty, Web API 2 controller called `TodoListController`.
+4. Copy the implementation of the TodoListController from this sample into the controller.  Don't forget to add the `[Authorize]` attribute to the class.
+5. In `TodoListController` resolving missing references by adding `using` statements for `System.Collections.Concurrent`, `TodoListService.Models`, `System.Security.Claims`.
 
 ### Creating the TodoListClient Project
 
-1. In Visual Studio 2013, create a new project for a Windows Store --> Blank App (XAML) called TodoListClient.
-2. Add the pre-release Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory, version 2.5.1-alpha.
+1. In the solution, create a new project for a Windows Store --> Blank App (XAML) called TodoListClient.
+2. Add the pre-release Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory, version 2.5.1-alpha, to the project.
 3. Open `Package.appxmanifest`, click the Capabilities tab, and enable the following four capabilities: Enterprise Authentication, Internet (Client), Private Networks (Client & Server), Shared User Certificates
 4. Copy the markup from `MainPage.xaml` in the sample project to `MainPage.xaml` in the new project.
 5. Copy the code from `MainPage.xaml.cs` in the sample project to `MainPage.xaml.cs` in the new project.
