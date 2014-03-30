@@ -49,11 +49,13 @@ namespace TodoListClient
         const string todoListBaseAddress = "https://localhost:44321";
 
         private HttpClient httpClient = new HttpClient();
-        private AuthenticationContext authContext = new AuthenticationContext(authority);
+        private AuthenticationContext authContext = null;
 
         public MainPage()
         {
             this.InitializeComponent();
+
+            authContext = new AuthenticationContext(authority);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
