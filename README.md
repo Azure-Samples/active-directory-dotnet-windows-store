@@ -3,7 +3,7 @@ NativeClient-WindowsStore
 
 This sample demonstrates a Windows Store application calling a web API that is secured using Azure AD.  The Windows Store application uses the Active Directory Authentication Library (ADAL) to obtain a JWT access token through the OAuth 2.0 protocol.  The access token is sent to the web API to authenticate the user.
 
-For more information about how the protocols work in this scenario and other scenarios, see the [Authentication Scenarios for Azure AD](http://msdn.microsoft.com/aad) document.
+For more information about how the protocols work in this scenario and other scenarios, see [Authentication Scenarios for Azure AD](http://go.microsoft.com/fwlink/?LinkId=394414).
 
 ## How To Run This Sample
 
@@ -156,7 +156,7 @@ First, in Visual Studio 2013 create an empty solution to host the  projects.  Th
 ### Creating the TodoListClient Project
 
 1. In the solution, create a new project for a Windows Store --> Blank App (XAML) called TodoListClient.
-2. Add the pre-release Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory, version 2.5.1-alpha, to the project.
+2. Add the pre-release Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory, version 2.6.0-alpha (or higher), to the project.
 3. Open `Package.appxmanifest`, click the Capabilities tab, and enable the following four capabilities: Enterprise Authentication, Internet (Client), Private Networks (Client & Server), Shared User Certificates
 4. Copy the markup from `MainPage.xaml` in the sample project to `MainPage.xaml` in the new project.
 5. Copy the code from `MainPage.xaml.cs` in the sample project to `MainPage.xaml.cs` in the new project.
