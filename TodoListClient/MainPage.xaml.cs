@@ -53,8 +53,8 @@ namespace TodoListClient
         // The Authority is the sign-in URL of the tenant.
         //
         const string aadInstance = "https://login.windows.net/{0}";
-        const string tenant = "skwantoso.com";
-        const string clientId = "d4fe66e1-a87a-4b3a-92dd-1c1480ee3455";
+        const string tenant = "[Enter tenant name, e.g. contoso.onmicrosoft.com]";
+        const string clientId = "[Enter client ID as obtained from Azure Portal, e.g. 82692da5-a86f-44c9-9d53-2f88d52b478b]";
 
         static string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);
 
@@ -62,7 +62,7 @@ namespace TodoListClient
         // To authenticate to the To Do list service, the client needs to know the service's App ID URI.
         // To contact the To Do list service we need it's URL as well.
         //
-        const string todoListResourceId = "https://skwantoso.com/TodoListService";
+        const string todoListResourceId = "[Enter App ID URI of TodoListService, e.g. https://contoso.onmicrosoft.com/TodoListService]";
         const string todoListBaseAddress = "https://localhost:44321";
 
         private HttpClient httpClient = new HttpClient();
