@@ -84,6 +84,24 @@ namespace TodoListClient
             Uri redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
 
             authContext = new AuthenticationContext(authority);
+
+            //
+            // Out of the box, this sample is *not* configured to work with Windows Integrated Authentication (WIA)
+            // when used with a federated Azure Active Directory domain.  To work with WIA the application manifest
+            // must enable additional capabilities.  These are not configured by default for this sample because 
+            // applications requesting the Enterprise Authentication or Shared User Certificates capabilities require 
+            // a higher level of verification to be accepted into the Windows Store, and not all developers may wish
+            // to perform the higher level of verification.
+            //
+            // To enable Windows Integrated Authentication, in Package.appxmanifest, in the Capabilities tab, enable:
+            // * Enterprise Authentication
+            // * Private Networks (Client & Server)
+            // * Shared User Certificates
+            //
+            // Plus uncomment the following line of code:
+            // 
+            // authContext.UseCorporateNetwork = true;
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
