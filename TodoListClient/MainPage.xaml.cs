@@ -72,11 +72,6 @@ namespace TodoListClient
         {
             this.InitializeComponent();
 
-            authContext = new AuthenticationContext(authority);
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
             //
             // Every Windows Store application has a unique URI.
             // Windows ensures that only this application will receive messages sent to this URI.
@@ -87,7 +82,12 @@ namespace TodoListClient
             //      This is the only purposes of this line of code, it has no functional purpose in the application.
             //
             Uri redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
-            
+
+            authContext = new AuthenticationContext(authority);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
             // When the app starts, fetch the user's To Do list from the service.
             GetTodoList();
         }
