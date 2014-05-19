@@ -22,8 +22,5 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
-    <Capability Name="privateNetworkClientServer" />
-    <Capability Name="sharedUserCertificates" />
-    <Capability Name="enterpriseAuthentication" />
   </Capabilities>
 </Package>
