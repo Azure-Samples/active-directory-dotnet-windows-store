@@ -159,7 +159,19 @@ You can verify the certificate is in the Trusted Root store by running this comm
 
 `PS C:\windows\system32> dir Cert:\LocalMachine\Root`
 
-### Step 6:  Run the sample
+### Step 6 (Optional):  Enable Windows Integrated Authentication when using a federated Azure AD tenant
+
+Out of the box, this sample is not configured to work with Windows Integrated Authentication (WIA) when used with a federated Azure Active Directory domain.  To work with WIA the application manifest must enable additional capabilities.  These are not configured by default for this sample because applications requesting the Enterprise Authentication or Shared User Certificates capabilities require a higher level of verification to be accepted into the Windows Store, and not all developers may wish to perform the higher level of verification.
+
+To enable Windows Integrated Authentication, in Package.appxmanifest, in the Capabilities tab, enable:
+* Enterprise Authentication
+* Private Networks (Client & Server)
+* Shared User Certificates
+
+Plus uncomment the following line of code: 
+`authContext.UseCorporateNetwork = true;`
+
+### Step 7:  Run the sample
 
 Clean the solution, rebuild the solution, and run it.  You might want to go into the solution properties and set both projects as startup projects, with the service project starting first.
 
@@ -189,7 +201,7 @@ First, in Visual Studio 2013 create an empty solution to host the  projects.  Th
 
 1. In the solution, create a new project for a Windows Store --> Blank App (XAML) called TodoListClient.
 2. Add the pre-release Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory, version 2.6.0-alpha (or higher), to the project.
-3. Open `Package.appxmanifest`, click the Capabilities tab, and enable the following four capabilities: Enterprise Authentication, Internet (Client), Private Networks (Client & Server), Shared User Certificates
+3. Open `Package.appxmanifest`, click the Capabilities tab, and enable the following capability: Internet (Client).
 4. Copy the markup from `MainPage.xaml` in the sample project to `MainPage.xaml` in the new project.
 5. Copy the code from `MainPage.xaml.cs` in the sample project to `MainPage.xaml.cs` in the new project.
 
