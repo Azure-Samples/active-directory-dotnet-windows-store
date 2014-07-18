@@ -185,46 +185,25 @@ To deploy the TodoListService to Azure Web Sites, you will create a web site, pu
 
 ### Create and Publish the TodoListService to an Azure Web Site
 
-
-
 1. Sign in to the [Azure management portal](https://manage.windowsazure.com).
-
 2. Click on Web Sites in the left hand nav.
-
 3. Click New in the bottom left hand corner, select Compute --> Web Site --> Quick Create, select the hosting plan and region, and give your web site a name, e.g. todolistservice-contoso.azurewebsites.net.  Click Create Web Site.
-
 4. Once the web site is created, click on it to manage it.  For this set of steps, download the publish profile and save it.  Other deployment mechanisms, such as from source control, can also be used.
-
 5. Switch to Visual Studio and go to the TodoListService project.  Right click on the project in the Solution Explorer and select Publish.  Click Import, and import the publish profile that you just downloaded.
-
 6. On the Connection tab, update the Destination URL so that it is https, for example https://todolistservice-skwantoso.azurewebsites.net.  Click Next.
-
 7. On the Settings tab, make sure Enable Organizational Authentication is NOT selected.  Click Publish.
-
 8. Visual Studio will publish the project and automatically open a browser to the URL of the project.  If you see the default web page of the project, the publication was successful.
 
 ### Update the Active Directory Tenant Application Registration
-
-
-
 1. Navigate to the [Azure management portal](https://manage.windowsazure.com).
-
 2. In your Active Directory tenant, click on the TodoListService application in the Applications tab.
-
 3. In the Configure tab, update the Sign-On URL and Reply URL fields to the address of your service, for example https://todolistservice-skwantoso.azurewebsites.net.
-
-
 
 ### Update the TodoListClient to call the TodoListService Running in Azure Web Sites
 
-
 1. In Visual Studio, go to the TodoListClient project.
-
 2. Open `MainPage.xaml.cs`.  Only one change is needed - update the `todo:TodoListBaseAddress` key value to be the address of the website you published, e.g. https://todolistservice-skwantoso.azurewebsites.net.
-
 3. Run the client!  If you are trying multiple different client types (e.g. .Net, Windows Store, Android, iOS) you can have them all call this one published web API.
-
-
 
 NOTE: Remember, the To Do list is stored in memory in this TodoListService sample. Azure Web Sites will spin down your web site if it is inactive, and your To Do list will get emptied. Also, if you increase the instance count of the web site, requests will be distributed among the instances and the To Do will not be the same on each instance.
 
