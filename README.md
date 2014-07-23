@@ -114,7 +114,6 @@ ms-app://s-1-15-2-2123189467-1366327299-2057240504-936110431-2588729968-14545362
 2. Open the `web.config` file.
 3. Find the app key `ida:Tenant` and replace the value with your AAD tenant name.
 4. Find the app key `ida:Audience` and replace the value with the App ID URI you registered earlier, for example `https://<your_tenant_name>/TodoListService`.
-5. Find the app key `ida:ClientId` and replace the value with the Client ID for the TodoListService from the Azure portal.
 
 #### Configure the TodoListClient project
 
