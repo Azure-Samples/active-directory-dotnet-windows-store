@@ -67,6 +67,7 @@ namespace TodoListClient
 
         private HttpClient httpClient = new HttpClient();
         private AuthenticationContext authContext = null;
+        private Uri redirectURI = null;
 
         public MainPage()
         {
@@ -81,7 +82,7 @@ namespace TodoListClient
             //      in AAD, set a breakpoint on the next line, run the app, and copy the string value of the URI.
             //      This is the only purposes of this line of code, it has no functional purpose in the application.
             //
-            Uri redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
+            redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
 
             authContext = new AuthenticationContext(authority);
 
@@ -116,7 +117,7 @@ namespace TodoListClient
             //
             // Use ADAL to get an access token to call the To Do list service.
             //
-            AuthenticationResult result = await authContext.AcquireTokenAsync(todoListResourceId, clientId);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectURI);
 
             if (result.Status != AuthenticationStatus.Success)
             {
@@ -172,7 +173,7 @@ namespace TodoListClient
             //
             // Use ADAL to get an access token to call the To Do list service.
             //
-            AuthenticationResult result = await authContext.AcquireTokenAsync(todoListResourceId, clientId);
+            AuthenticationResult result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectURI);
 
             if (result.Status != AuthenticationStatus.Success)
             {
