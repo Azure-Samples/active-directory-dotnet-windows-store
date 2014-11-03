@@ -218,7 +218,7 @@ First, in Visual Studio 2013 create an empty solution to host the  projects.  Th
 ### Creating the TodoListClient Project
 
 1. In the solution, create a new project for a Windows Store --> Blank App (XAML) called TodoListClient.
-2. Add the stable release Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory, version 2.6.0-alpha (or higher), to the project.
+2. Add the (stable release) Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory to the project.
 3. Open `Package.appxmanifest`, click the Capabilities tab, and enable the following capability: Internet (Client).
 4. Copy the markup from `MainPage.xaml` in the sample project to `MainPage.xaml` in the new project.
 5. Copy the code from `MainPage.xaml.cs` in the sample project to `MainPage.xaml.cs` in the new project.
