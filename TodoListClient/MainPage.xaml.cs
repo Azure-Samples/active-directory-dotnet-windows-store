@@ -52,9 +52,9 @@ namespace TodoListClient
         // The AAD Instance is the instance of Azure, for example public Azure or Azure China.
         // The Authority is the sign-in URL of the tenant.
         //
-        const string aadInstance = "https://login.windows.net/{0}";
         const string tenant = "[Enter tenant name, e.g. contoso.onmicrosoft.com]";
         const string clientId = "[Enter client ID as obtained from Azure Portal, e.g. 82692da5-a86f-44c9-9d53-2f88d52b478b]";
+        const string aadInstance = "https://login.microsoftonline.com/{0}";
 
         static string authority = String.Format(CultureInfo.InvariantCulture, aadInstance, tenant);
         //
