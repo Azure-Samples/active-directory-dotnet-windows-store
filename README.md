@@ -1,11 +1,10 @@
 ---
-services:
-platforms:
-author: azure
+services: active-directory
+platforms: dotnet
+author: dstrockis
 ---
 
-Integrating a Windows Store application with Azure AD
-=========================
+# Integrating a Windows Store application with Azure AD
 
 This sample demonstrates a Windows Store application calling a web API that is secured using Azure AD.  The Windows Store application uses the Active Directory Authentication Library (ADAL) to obtain a JWT access token through the OAuth 2.0 protocol.  The access token is sent to the web API to authenticate the user.
 
@@ -20,13 +19,13 @@ To run this sample you will need:
 - An Azure subscription (a free trial is sufficient)
 - A Microsoft account
 
-Every Azure subscription has an associated Azure Active Directory tenant.  If you don't already have an Azure subscription, you can get a free subscription by signing up at [http://wwww.windowsazure.com](http://www.windowsazure.com).  All of the Azure AD features used by this sample are available free of charge.
+Every Azure subscription has an associated Azure Active Directory tenant.  If you don't already have an Azure subscription, you can get a free subscription by signing up at [https://azure.microsoft.com](https://azure.microsoft.com).  All of the Azure AD features used by this sample are available free of charge.
 
 ### Step 1:  Clone or download this repository
 
 From your shell or command line:
 
-`git clone https://github.com/AzureADSamples/NativeClient-WindowsStore.git`
+`git clone https://github.com/Azure-Samples/active-directory-dotnet-windows-store.git`
 
 ### Step 2:  Create a user account in your Azure Active Directory tenant
 
