@@ -117,17 +117,20 @@ namespace TodoListClient
             //
             // Use ADAL to get an access token to call the To Do list service.
             //
-            AuthenticationResult result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectURI);
-
-            if (result.Status != AuthenticationStatus.Success)
+            AuthenticationResult result = null;
+            try
             {
-                if (result.Error == "authentication_canceled")
+                result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectURI, new PlatformParameters(PromptBehavior.Auto, false));
+            }
+            catch (AdalException ex)
+            {
+                if (ex.ErrorCode == "access_denied")
                 {
                     // The user cancelled the sign-in, no need to display a message.
                 }
                 else
                 {
-                    MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError: {0}\n\nError Description:\n\n{1}", result.Error, result.ErrorDescription), "Sorry, an error occurred while signing you in.");
+                    MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError Description:\n\n{0}", ex.Message), "Sorry, an error occurred while signing you in.");
                     await dialog.ShowAsync();
                 }
                 return;
@@ -145,10 +148,10 @@ namespace TodoListClient
                 var todoArray = JsonArray.Parse(await response.Content.ReadAsStringAsync());
 
                 TodoList.ItemsSource = from todo in todoArray
-                                       select new
-                                       {
-                                           Title = todo.GetObject()["Title"].GetString()
-                                       };
+                                        select new
+                                        {
+                                            Title = todo.GetObject()["Title"].GetString()
+                                        };
             }
             else
             {
@@ -173,17 +176,20 @@ namespace TodoListClient
             //
             // Use ADAL to get an access token to call the To Do list service.
             //
-            AuthenticationResult result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectURI);
-
-            if (result.Status != AuthenticationStatus.Success)
+            AuthenticationResult result = null;
+            try
             {
-                if (result.Error == "authentication_canceled")
+                result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectURI, new PlatformParameters(PromptBehavior.Auto, false));
+            }
+            catch (AdalException ex)
+            {
+                if (ex.ErrorCode == "access_denied")
                 {
                     // The user cancelled the sign-in, no need to display a message.
                 }
                 else
                 {
-                    MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError: {0}\n\n Error Description:\n\n{1}", result.Error, result.ErrorDescription), "Sorry, an error occurred while signing you in.");
+                    MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError Description:\n\n{0}", ex.Message), "Sorry, an error occurred while signing you in.");
                     await dialog.ShowAsync();
                 }
                 return;
