@@ -111,6 +111,11 @@ namespace TodoListClient
             GetTodoList();
         }
 
+        private async void ShowError(MessageDialog dialog)
+        {
+            await dialog.ShowAsync();
+        }
+
         // Retrieve the user's To Do list.
         private async void GetTodoList()
         {
@@ -124,14 +129,14 @@ namespace TodoListClient
             }
             catch (AdalException ex)
             {
-                if (ex.ErrorCode == "access_denied")
+                if (ex.ErrorCode == "authentication_canceled")
                 {
                     // The user cancelled the sign-in, no need to display a message.
                 }
                 else
                 {
                     MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError Description:\n\n{0}", ex.Message), "Sorry, an error occurred while signing you in.");
-                    await dialog.ShowAsync();
+                    ShowError(dialog);
                 }
                 return;
             }
@@ -183,14 +188,14 @@ namespace TodoListClient
             }
             catch (AdalException ex)
             {
-                if (ex.ErrorCode == "access_denied")
+                if (ex.ErrorCode == "authentication_canceled")
                 {
                     // The user cancelled the sign-in, no need to display a message.
                 }
                 else
                 {
                     MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError Description:\n\n{0}", ex.Message), "Sorry, an error occurred while signing you in.");
-                    await dialog.ShowAsync();
+                    ShowError(dialog);
                 }
                 return;
             }
