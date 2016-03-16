@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="*"/>
@@ -19,9 +20,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1"
-                   TextWrapping="NoWrap" Margin="0,0,30,40" VerticalAlignment="Bottom" Style="{StaticResource HeaderTextBlockStyle
-}" Text="To Do List"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="0,0,30,40" VerticalAlignment="Bottom" Style="{StaticResource HeaderTextBlockStyle}" Text="To Do List"/>
         <Grid Grid.Column="1" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -41,5 +40,7 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
+        
+        
     </Grid>
 </Page>
