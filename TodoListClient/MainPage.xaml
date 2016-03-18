@@ -10,28 +10,21 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="0,0,30,40" VerticalAlignment="Bottom" Style="{StaticResource HeaderTextBlockStyle}" Text="To Do List"/>
-        <Grid Grid.Column="1" Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="120"/>
-                <ColumnDefinition Width="300" />
-            </Grid.ColumnDefinitions>
-            <TextBox x:Name="TodoText" Grid.Column="0" Grid.Row="2"  Margin="5" />
-            <Button Grid.Column="1" Margin="10,0,0,0" Click="Button_Click_Add_Todo" >Add To Do</Button>
-            <HyperlinkButton Grid.Column="2" HorizontalAlignment="Right" Content="Remove Account" Click="HyperlinkButton_Click_Remove_Account"/>
-        </Grid>
-        <GridView x:Name="TodoList" Grid.Column="1" Grid.Row="3" Margin="0,10,0,0" >
+        <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="NoWrap" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource HeaderTextBlockStyle}" Text="To Do List"/>
+        <TextBox x:Name="TodoText" Grid.Row="2" Grid.Column="1" />
+        <Button Margin="0,10,0,0" Grid.Row="3" Grid.Column="1" Click="Button_Click_Add_Todo" >Add To Do</Button>
+        <GridView x:Name="TodoList" Grid.Column="1" Grid.Row="4" Margin="0,10,0,0" >
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Width="200" Height="150" Margin="10" Background="#FFA2A2A4" >
@@ -43,4 +36,9 @@
         
         
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar IsSticky="False" IsOpen="False" ClosedDisplayMode="Minimal">
+            <AppBarButton x:Uid="RemoveAppBarButton" x:Name="RemoveAppBarButton" Label="Remove Account" Icon="Account" Click="HyperlinkButton_Click_Remove_Account" />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
