@@ -4,7 +4,7 @@ platforms: dotnet
 author: dstrockis
 ---
 
-# Integrating a Windows Store application with Azure AD
+# Integrating a Windows Universal application with Azure AD
 
 This sample demonstrates a Windows Store application calling a web API that is secured using Azure AD.  The Windows Store application uses the Active Directory Authentication Library (ADAL) to obtain a JWT access token through the OAuth 2.0 protocol.  The access token is sent to the web API to authenticate the user.
 
@@ -15,8 +15,8 @@ For more information about how the protocols work in this scenario and other sce
 ## How To Run This Sample
 
 To run this sample you will need:
-- Visual Studio 2013
-- Windows 8.1 or higher
+- Visual Studio 2015
+- Windows 10
 - An Internet connection
 - An Azure subscription (a free trial is sufficient)
 - A Microsoft account
@@ -55,7 +55,7 @@ There are two projects in this sample.  Each needs to be separately registered i
 
 Before you can register the TodoListClient application in the Azure portal, you need to find out the application's redirect URI.  Windows 8 provides each application with a unique URI and ensures that messages sent to that URI are only sent to that application.  To determine the redirect URI for your project:
 
-1. Open the solution in Visual Studio 2013.
+1. Open the solution in Visual Studio 2015.
 2. In the TodoListClient project, open the `MainPage.xaml.cs` file.
 3. Find this line of code and set a breakpoint on it.
 
@@ -190,25 +190,3 @@ NOTE: Remember, the To Do list is stored in memory in this TodoListService sampl
 ## About The Code
 
 Coming soon.
-
-## How To Recreate This Sample
-
-First, in Visual Studio 2013 create an empty solution to host the  projects.  Then, follow these steps to create each project.
-
-### Creating the TodoListService Project
-
-1. In the solution, create a new ASP.Net MVC web API project called TodoListService and while creating the project, click the Change Authentication button, select Organizational Accounts, Cloud - Single Organization, enter the name of your Azure AD tenant, and set the Access Level to Single Sign On.  You will be prompted to sign-in to your Azure AD tenant.  NOTE:  You must sign-in with a user that is in the tenant; you cannot, during this step, sign-in with a Microsoft account.
-2. In the `Models` folder add a new class called `TodoItem.cs`.  Copy the implementation of TodoItem from this sample into the class.
-3. Add a new, empty, Web API 2 controller called `TodoListController`.
-4. Copy the implementation of the TodoListController from this sample into the controller.  Don't forget to add the `[Authorize]` attribute to the class.
-5. In `TodoListController` resolving missing references by adding `using` statements for `System.Collections.Concurrent`, `TodoListService.Models`, `System.Security.Claims`.
-
-### Creating the TodoListClient Project
-
-1. In the solution, create a new project for a Windows Store --> Blank App (XAML) called TodoListClient.
-2. Add the (stable release) Active Directory Authentication Library (ADAL) NuGet, Microsoft.IdentityModel.Clients.ActiveDirectory to the project.
-3. Open `Package.appxmanifest`, click the Capabilities tab, and enable the following capability: Internet (Client).
-4. Copy the markup from `MainPage.xaml` in the sample project to `MainPage.xaml` in the new project.
-5. Copy the code from `MainPage.xaml.cs` in the sample project to `MainPage.xaml.cs` in the new project.
-
-Finally, in the properties of the solution itself, set both projects as startup projects.
