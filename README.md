@@ -18,10 +18,9 @@ To run this sample you will need:
 - Visual Studio 2015
 - Windows 10
 - An Internet connection
-- An Azure subscription (a free trial is sufficient)
 - A Microsoft account
-
-Every Azure subscription has an associated Azure Active Directory tenant.  If you don't already have an Azure subscription, you can get a free subscription by signing up at [https://azure.microsoft.com](https://azure.microsoft.com).  All of the Azure AD features used by this sample are available free of charge.
+- An Azure Active Directory (Azure AD) tenant. For more information on how to get an Azure AD tenant, please see [How to get an Azure AD tenant](https://azure.microsoft.com/en-us/documentation/articles/active-directory-howto-tenant/) 
+- A user account in your Azure AD tenant. This sample will not work with a Microsoft account, so if you signed in to the Azure portal with a Microsoft account and have never created a user account in your directory before, you need to do that now.
 
 ### Step 1:  Clone or download this repository
 
@@ -29,11 +28,7 @@ From your shell or command line:
 
 `git clone https://github.com/Azure-Samples/active-directory-dotnet-windows-store.git`
 
-### Step 2:  Create a user account in your Azure Active Directory tenant
-
-If you already have a user account in your Azure Active Directory tenant, you can skip to the next step.  This sample will not work with a Microsoft account, so if you signed in to the Azure portal with a Microsoft account and have never created a user account in your directory before, you need to do that now.  If you create an account and want to use it to sign-in to the Azure portal, don't forget to add the user account as a co-administrator of your Azure subscription.
-
-### Step 3:  Register the sample with your Azure Active Directory tenant
+### Step 2:  Register the sample with your Azure Active Directory tenant
 
 There are two projects in this sample.  Each needs to be separately registered in your Azure AD tenant.
 
@@ -80,7 +75,7 @@ ms-app://s-1-15-2-2123189467-1366327299-2057240504-936110431-2588729968-14545362
 7. Find the Application ID value and copy it to the clipboard.
 8. Configure Permissions for your application - in the Settings menu, choose the 'Required permissions' section, click on **Add**, then **Select an API**, and type 'TodoListService' in the textbox. Then, click on  **Select Permissions** and select 'Access TodoListService'.
 
-### Step 4:  Configure the sample to use your Azure AD tenant
+### Step 3:  Configure the sample to use your Azure AD tenant
 
 #### Configure the TodoListService project
 
@@ -96,7 +91,7 @@ ms-app://s-1-15-2-2123189467-1366327299-2057240504-936110431-2588729968-14545362
 3. Find the declaration of `clientId` and replace the value with the Application ID from the Azure portal.
 4. Find the declaration of `todoListResourceId` and `todoListBaseAddress` and ensure their values are set properly for your TodoListService project.
 
-### Step 5:  Trust the IIS Express SSL certificate
+### Step 4:  Trust the IIS Express SSL certificate
 
 Since the web API is SSL protected, the client of the API (the web app) will refuse the SSL connection to the web API unless it trusts the API's SSL certificate.  Use the following steps in Windows Powershell to trust the IIS Express SSL certificate.  You only need to do this once.  If you fail to do this step, calls to the TodoListService will always throw an unhandled exception where the inner exception message is:
 
@@ -132,7 +127,7 @@ You can verify the certificate is in the Trusted Root store by running this comm
 
 `PS C:\windows\system32> dir Cert:\LocalMachine\Root`
 
-### Step 6 (Optional):  Enable Windows Integrated Authentication when using a federated Azure AD tenant
+### Step 5 (Optional):  Enable Windows Integrated Authentication when using a federated Azure AD tenant
 
 Out of the box, this sample is not configured to work with Windows Integrated Authentication (WIA) when used with a federated Azure Active Directory domain.  To work with WIA the application manifest must enable additional capabilities.  These are not configured by default for this sample because applications requesting the Enterprise Authentication or Shared User Certificates capabilities require a higher level of verification to be accepted into the Windows Store, and not all developers may wish to perform the higher level of verification.
 
@@ -144,7 +139,7 @@ To enable Windows Integrated Authentication, in Package.appxmanifest, in the Cap
 Plus uncomment the following line of code: 
 `authContext.UseCorporateNetwork = true;`
 
-### Step 7:  Run the sample
+### Step 6:  Run the sample
 
 Clean the solution, rebuild the solution, and run it.  You might want to go into the solution properties and set both projects as startup projects, with the service project starting first.
 
