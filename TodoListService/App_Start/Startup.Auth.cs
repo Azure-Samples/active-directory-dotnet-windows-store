@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.ActiveDirectory;
+﻿using Microsoft.Owin.Security.ActiveDirectory;
 using Owin;
+using System.Configuration;
+using System.IdentityModel.Tokens;
 
 namespace TodoListService
 {
@@ -16,7 +13,10 @@ namespace TodoListService
             app.UseWindowsAzureActiveDirectoryBearerAuthentication(
                 new WindowsAzureActiveDirectoryBearerAuthenticationOptions
                 {
-                    Audience = ConfigurationManager.AppSettings["ida:Audience"],
+                    TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidAudience = ConfigurationManager.AppSettings["ida:Audience"]
+                    },
                     Tenant = ConfigurationManager.AppSettings["ida:Tenant"]
                 });
         }
