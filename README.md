@@ -10,7 +10,11 @@ endpoint: AAD V1
 # Integrating a Windows Universal application with Azure AD
 
 This sample demonstrates a Windows Store or UWP application calling a web API that is secured using Azure AD.
-The Windows Store application uses the Active Directory Authentication Library (ADAL) to obtain a JWT access token through the OAuth 2.0 protocol.  The access token is sent to the web API to authenticate the user.### Scenario
+The Windows Store application uses the Active Directory Authentication Library (ADAL) to obtain a JWT access token through the OAuth 2.0 protocol.  The access token is sent to the web API to authenticate the user.
+
+![Overview](ReadmeFiles/topology.png)
+
+## Scenario
 
 After starting the TodoListService, run the TodoListClient project, and you'll be prompted to sign in with an account
 in the Tenant where you registered the application.
