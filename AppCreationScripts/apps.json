@@ -1,0 +1,79 @@
+{
+  "Sample": {
+    "Title": "A Windows Store 8.1 or Windows 10 (UWP) application that uses Azure AD and the ADAL library to authenticate the user and call a web API using OAuth 2.0 access tokens.",
+    "Level": 200,
+    "Client": "Mobile (UWP)",
+    "Service": "ASP.NET Web API"
+  },
+
+  /*
+    This section describes the Azure AD Applications to configure, and their dependencies
+  */
+  "AADApps": [
+    {
+      "Id": "service",
+      "Name": "TodoListService-StoreApp",
+      "IsPublicClient": false,
+      "HomePage": "http://localhost:9184"
+    },
+    {
+      "Id": "client",
+      "Name": "TodoListClient-StoreApp",
+      "IsPublicClient": true,
+      "RequiredResourcesAccess": [
+        {
+          "Resource": "service",
+          "DelegatedPermissions": [ "user_impersonation" ]
+        }
+      ]
+    }
+  ],
+
+  /*
+    This section describes how to update the code in configuration files from the apps coordinates, once the apps
+    are created in Azure AD.
+    Each section describes a configuration file, for one of the apps, it's type (XML, JSon, plain text), its location
+    with respect to the root of the sample, and the mappping (which string in the config file is mapped to which value
+  */
+  "CodeConfiguration": [
+    {
+      "App": "service",
+      "SettingKind": "XML",
+      "SettingFile": "\\..\\TodoListService\\Web.Config",
+      "Mappings": [
+        {
+          "key": "ida:Tenant",
+          "value": "$tenantName"
+        },
+        {
+          "key": "ida:Audience",
+          "value": "service.IdentifierUris"
+        }
+      ]
+    },
+
+    {
+      "App": "client",
+      "SettingKind": "Text",
+      "SettingFile": "\\..\\TodoListClient\\MainPage.xaml.cs",
+      "Mappings": [
+        {
+          "key": "const string tenant",
+          "value": "$tenantName"
+        },
+        {
+          "key": "const string clientId",
+          "value": ".AppId"
+        },
+        {
+          "key": "const string todoListResourceId",
+          "value": "service.IdentifierUris"
+        },
+        {
+          "key": "const string todoListBaseAddress",
+          "value": "service.HomePage"
+        }
+      ]
+    }
+  ]
+}
