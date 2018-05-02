@@ -9,6 +9,8 @@ endpoint: AAD V1
 ---
 # Integrating a Windows Universal application with Azure AD
 
+![Build badge](https://identitydivision.visualstudio.com/_apis/public/build/definitions/a7934fdd-dcde-4492-a406-7fad6ac00e17/29/badge)
+
 This sample demonstrates a Windows Store or UWP application calling a web API that is secured using Azure AD.
 The Windows Store application uses the Active Directory Authentication Library (ADAL) to obtain a JWT access token through the OAuth 2.0 protocol.  The access token is sent to the web API to authenticate the user.
 
