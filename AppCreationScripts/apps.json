@@ -14,7 +14,7 @@
       "Id": "service",
       "Name": "TodoListService-StoreApp",
       "IsPublicClient": false,
-      "HomePage": "https://localhost:44321/"
+      "HomePage": "http://localhost:9184"
     },
     {
       "Id": "client",
