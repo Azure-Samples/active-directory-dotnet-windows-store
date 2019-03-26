@@ -4,7 +4,7 @@ platforms: dotnet
 author: jmprieur
 level: 200
 client: Mobile (UWP)
-service: ASP.NET Web API
+service: ASP .NET Web API
 endpoint: Azure AD v1.0
 ---
 # Integrating a Windows Universal application with Azure AD
