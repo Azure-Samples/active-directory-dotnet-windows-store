@@ -5,7 +5,7 @@ author: jmprieur
 level: 200
 client: Mobile (UWP)
 service: ASP.NET Web API
-endpoint: AAD V1
+endpoint: Azure AD v1.0
 ---
 # Integrating a Windows Universal application with Azure AD
 
