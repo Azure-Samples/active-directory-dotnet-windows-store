@@ -4,12 +4,18 @@ platforms: dotnet
 author: jmprieur
 level: 200
 client: Mobile (UWP)
-service: ASP .NET Web API
+service: ASP.NET Web API
 endpoint: Azure AD v1.0
 ---
-# Integrating a Windows Universal application with Azure AD
+# Integrating a Windows Universal application the Microsoft identity platform
 
 ![Build badge](https://identitydivision.visualstudio.com/_apis/public/build/definitions/a7934fdd-dcde-4492-a406-7fad6ac00e17/29/badge)
+
+> There's a newer version of this sample! Check it out: https://github.com/azure-samples/ms-identity-dotnet-native-uwp
+>
+> This newer sample takes advantage of the Microsoft identity platform (formerly Azure AD v2.0).
+>
+> While still in public preview, every component is supported in production environments
 
 This sample demonstrates a Windows Store or UWP application calling a web API that is secured using Azure AD.
 The Windows Store application uses the Active Directory Authentication Library (ADAL) to obtain a JWT access token through the OAuth 2.0 protocol.  The access token is sent to the web API to authenticate the user.
@@ -110,7 +116,7 @@ ms-app://s-1-15-2-2123189467-1366327299-2057240504-936110431-2588729968-14545362
 
    | Parameter | Value to use |
    |-----------|--------------|
-   | **Scope name** | `access_as_user` |
+   | **Scope name** | `user_impersonation` |
    | **Who can consent** | `Admins and users` |
    | **Admin consent display name** | `Access TodoListService-StoreApp as a user` |
    | **Admin consent description** | `Accesses the TodoListService-StoreApp Web API as a user` |
