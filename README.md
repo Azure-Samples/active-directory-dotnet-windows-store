@@ -77,7 +77,21 @@ of the Azure Active Directory window respectively as *Name* and *Directory ID*
 1. For the *Redirect URI (optional)*, select "Web" from the dropdown, and enter the base URL for the sample. By default, this sample uses `https://localhost:44321/`.
 1. Click **Register** to create the application.
 1. In the application's **Overview** page, find the *Application (client) ID* value and record it for later. You'll need it to configure the Visual Studio configuration file for this project.
-1. Then click on **Expose an API**, and set the Application ID URL at the top of the page to `'https://<your_tenant_name>/<your_application_name>'` (replacing `<your_tenant_name>` with the name of your Azure AD tenant and `<your_application_name>` with the name of your service app, for example 'TodoListService-StoreApp').
+1. Then click on **Expose an API**, and set the **Application ID URL** at the top of the page to `'https://<your_tenant_name>/<your_application_name>'` (replacing `<your_tenant_name>` with the name of your Azure AD tenant and `<your_application_name>` with the name of your service app, for example 'TodoListService-StoreApp').
+1. Select **Add a scope**.
+1. Set the values for the following parameters:
+
+   | Parameter | Value to use |
+   |-----------|--------------|
+   | **Scope name** | `user_impersonation` |
+   | **Who can consent** | `Admins and users` |
+   | **Admin consent display name** | `Access TodoListService-StoreApp as a user` |
+   | **Admin consent description** | `Accesses the TodoListService-StoreApp Web API as a user` |
+   | **User consent display name** | `Access TodoListService-StoreApp as a user` |
+   | **User consent description** | `Accesses the TodoListService-StoreApp Web API as a user` |
+   | **State** | `Enabled` |
+
+1. Select **Add scope**.
 
 #### Find the TodoListClient app's redirect URI
 
@@ -109,22 +123,6 @@ ms-app://s-1-15-2-2123189467-1366327299-2057240504-936110431-2588729968-14545362
 1. For the *Redirect URI*, enter value that you obtained during the previous step with the debugger and select "Public client (mobile & desktop)" from the dropdown.
 1. Click **Register** to create the application.
 1. In the application's **Overview** page, find the *Application ID* value and record it for later. You'll need it to configure the Visual Studio configuration file for this project.
-1. In the list of pages for the app, select **Expose an API**.
-1. Select **Add a scope**.
-1. Accept the suggested Application ID URI, api://{clientId}, by selecting **Save and Continue**.
-1. Set the values for the following parameters:
-
-   | Parameter | Value to use |
-   |-----------|--------------|
-   | **Scope name** | `user_impersonation` |
-   | **Who can consent** | `Admins and users` |
-   | **Admin consent display name** | `Access TodoListService-StoreApp as a user` |
-   | **Admin consent description** | `Accesses the TodoListService-StoreApp Web API as a user` |
-   | **User consent display name** | `Access TodoListService-StoreApp as a user` |
-   | **User consent description** | `Accesses the TodoListService-StoreApp Web API as a user` |
-   | **State** | `Enabled` |
-
-1. Select **Add scope**.
 
 ### Step 3:  Configure the sample to use your Azure AD tenant
 
