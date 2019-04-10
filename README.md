@@ -102,7 +102,7 @@ Before you can register the TodoListClient application in the Azure portal, you 
 3. Find this line of code and set a breakpoint on it.
 
 ```C#
-Uri redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
+redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
 ```
 
 4. Right-click on the TodoListClient project and Debug --> Start New Instance.
